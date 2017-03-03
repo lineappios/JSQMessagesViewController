@@ -1,4 +1,4 @@
-//
+
 //  Created by Jesse Squires
 //  http://www.jessesquires.com
 //
@@ -200,7 +200,6 @@
                        successfully:(BOOL)flag {
 
     // set progress to full, then fade back to the default state
-    [self stopProgressTimer];
     self.progressView.progress = 1;
     [UIView transitionWithView:self.cachedMediaView
                       duration:.2
@@ -212,6 +211,7 @@
                                                             forDuration:self.audioPlayer.duration];
                     }
                     completion:nil];
+    [self stopProgressTimer];
 }
 
 #pragma mark - JSQMessageMediaData protocol

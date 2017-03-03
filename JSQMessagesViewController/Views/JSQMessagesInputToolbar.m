@@ -109,7 +109,14 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     BOOL hasText = [self.contentView.textView hasText];
 
     if (self.sendButtonOnRight) {
-        self.contentView.rightBarButtonItem.enabled = hasText;
+        if (hasText) {
+            [self.contentView.rightBarButtonItem setImage:[UIImage imageNamed:@"chat_send"] forState:UIControlStateNormal];
+            [self.contentView.rightBarButtonItem setTag:100];
+        } else {
+            [self.contentView.rightBarButtonItem setImage:[UIImage imageNamed:@"chat_mic2"] forState:UIControlStateNormal];
+            [self.contentView.rightBarButtonItem setTag:200];
+        }
+//        self.contentView.rightBarButtonItem.enabled = hasText;
     }
     else {
         self.contentView.leftBarButtonItem.enabled = hasText;
