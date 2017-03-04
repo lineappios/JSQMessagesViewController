@@ -20,6 +20,13 @@
 
 #import "JSQMessageData.h"
 
+typedef enum {
+    JSQMessageStatusDelivered,
+    JSQMessageStatusReaded,
+    JSQMessageStatusSent,
+    JSQMessageStatusFail
+} JSQMessageStatus;
+
 /**
  *  The `JSQMessage` class is a concrete class for message model objects that represents a single user message.
  *  The message can be a text message or media message, depending on how it is initialized.
@@ -33,6 +40,11 @@
  *  Returns the string identifier that uniquely identifies the user who sent the message. 
  */
 @property (copy, nonatomic, readonly) NSString *senderId;
+
+/**
+ *  Returns the string identifier that uniquely identifies the user who sent the message.
+ */
+@property (assign, nonatomic) JSQMessageStatus status;
 
 /**
  *  Returns the display name for the user who sent the message. This value does not have to be unique.
