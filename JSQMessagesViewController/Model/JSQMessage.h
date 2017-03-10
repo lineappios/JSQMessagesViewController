@@ -42,9 +42,14 @@ typedef enum {
 @property (copy, nonatomic, readonly) NSString *senderId;
 
 /**
- *  Returns the string identifier that uniquely identifies the user who sent the message.
+ *  Returns the message delivery status.
  */
 @property (assign, nonatomic) JSQMessageStatus status;
+
+/**
+ *  Returns the string identifier that uniquely identifies the user who sent the message.
+ */
+@property (strong, nonatomic) NSString *audioName;
 
 /**
  *  Returns the display name for the user who sent the message. This value does not have to be unique.

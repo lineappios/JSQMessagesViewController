@@ -138,6 +138,16 @@
     return [self.media mediaView] ?: [self.media mediaPlaceholderView];
 }
 
+- (void)setStatus:(JSQMessageStatus)status
+{
+    _status = status;
+}
+
+- (void)setAudioName:(NSString *)audioName
+{
+    _audioName = audioName;
+}
+
 #pragma mark - NSCoding
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -150,7 +160,8 @@
         _isMediaMessage = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isMediaMessage))];
         _text = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(text))];
         _media = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(media))];
-        _status = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(media))];
+        _status = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(status))];
+        _audioName = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(audioName))];
     }
     return self;
 }
@@ -163,6 +174,7 @@
     [aCoder encodeBool:self.isMediaMessage forKey:NSStringFromSelector(@selector(isMediaMessage))];
     [aCoder encodeObject:self.text forKey:NSStringFromSelector(@selector(text))];
     [aCoder encodeInteger:self.status forKey:NSStringFromSelector(@selector(status))];
+    [aCoder encodeObject:self.audioName forKey:NSStringFromSelector(@selector(audioName))];
 
     if ([self.media conformsToProtocol:@protocol(NSCoding)]) {
         [aCoder encodeObject:self.media forKey:NSStringFromSelector(@selector(media))];
